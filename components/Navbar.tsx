@@ -17,6 +17,7 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { name: 'Início', href: '#hero' },
     { name: 'Sobre', href: '#about' },
+    { name: 'Agenda', href: '#agenda' },
     { name: 'Ministérios', href: '#ministries' },
     { name: 'Cultos', href: '#live' },
     { name: 'Devocional IA', href: '#devotional' },
@@ -38,7 +39,7 @@ const Navbar: React.FC = () => {
         </a>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex space-x-6 lg:space-x-8">
           {navLinks.map((link) => (
             <a 
               key={link.name} 

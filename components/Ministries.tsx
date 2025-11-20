@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Music, User, Baby, HandHeart } from 'lucide-react';
+import { Music, User, Baby, HandHeart, Shield, HeartHandshake, BookOpen, Flame } from 'lucide-react';
 import { Ministry } from '../types';
 
 const ministries: Ministry[] = [
@@ -31,6 +31,34 @@ const ministries: Ministry[] = [
     description: 'Estendendo a mão a quem precisa, levando alimento físico e espiritual.',
     image: 'https://picsum.photos/seed/help/800/600',
     icon: 'hand'
+  },
+  {
+    id: '5',
+    title: 'Grupo de Irmãs',
+    description: 'Mulheres de oração que sustentam a igreja com intercessão, amor e comunhão.',
+    image: 'https://picsum.photos/seed/sisters/800/600',
+    icon: 'sisters'
+  },
+  {
+    id: '6',
+    title: 'Grupo de Varões',
+    description: 'Homens de coragem, pilares da igreja, servindo com dedicação e força no Reino.',
+    image: 'https://picsum.photos/seed/men/800/600',
+    icon: 'men'
+  },
+  {
+    id: '7',
+    title: 'Mulheres de Provérbios',
+    description: 'Sabedoria e graça para edificar o lar e influenciar a sociedade segundo a Palavra.',
+    image: 'https://picsum.photos/seed/wisdom/800/600',
+    icon: 'proverbs'
+  },
+  {
+    id: '8',
+    title: 'Homens que Oram',
+    description: 'Buscando a face de Deus incansavelmente para romper barreiras espirituais.',
+    image: 'https://picsum.photos/seed/menpraying/800/600',
+    icon: 'prayingmen'
   }
 ];
 
@@ -38,7 +66,11 @@ const iconMap: Record<string, React.ReactNode> = {
   music: <Music size={24} />,
   user: <User size={24} />,
   baby: <Baby size={24} />,
-  hand: <HandHeart size={24} />
+  hand: <HandHeart size={24} />,
+  sisters: <HeartHandshake size={24} />,
+  men: <Shield size={24} />,
+  proverbs: <BookOpen size={24} />,
+  prayingmen: <Flame size={24} />
 };
 
 const Ministries: React.FC = () => {

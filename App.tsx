@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import Agenda from './components/Agenda';
 import Ministries from './components/Ministries';
 import LiveServices from './components/LiveServices';
 import DevotionalAI from './components/DevotionalAI';
@@ -31,6 +32,7 @@ function App() {
       <main className="flex-grow">
         <Hero />
         <About />
+        <Agenda />
         <Ministries />
         <LiveServices />
         <DevotionalAI />
