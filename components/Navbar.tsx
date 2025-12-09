@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Church } from 'lucide-react';
+import { Menu, X, Flame } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [logoError, setLogoError] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,11 +30,22 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
         
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
-          <div className="bg-adm-gold p-2 rounded-full group-hover:scale-110 transition-transform duration-300">
-            <Church className="text-adm-blue w-6 h-6" />
+        <a href="#" className="flex items-center gap-3 group">
+          <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-adm-gold shadow-lg group-hover:scale-110 transition-transform duration-300 bg-black">
+            {!logoError ? (
+              <img 
+                src="logo-church.png" // Nome sugerido para o arquivo do usuário
+                alt="ADMFO Logo"
+                className="w-full h-full object-cover"
+                onError={() => setLogoError(true)}
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center bg-gradient-to-b from-gray-900 to-black">
+                <Flame className="text-orange-500 fill-orange-600 animate-pulse" size={24} />
+              </div>
+            )}
           </div>
-          <span className={`font-serif text-2xl font-bold tracking-wide ${scrolled ? 'text-white' : 'text-white'}`}>
+          <span className={`font-serif text-2xl font-bold tracking-wide ${scrolled ? 'text-white' : 'text-white'} drop-shadow-md`}>
             ADMFO
           </span>
         </a>
@@ -44,7 +56,7 @@ const Navbar: React.FC = () => {
             <a 
               key={link.name} 
               href={link.href}
-              className="text-white hover:text-adm-gold font-medium transition-colors duration-200 text-sm tracking-wider uppercase"
+              className="text-white hover:text-adm-gold font-medium transition-colors duration-200 text-sm tracking-wider uppercase drop-shadow-sm"
             >
               {link.name}
             </a>

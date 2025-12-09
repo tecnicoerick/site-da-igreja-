@@ -1,7 +1,9 @@
-import React from 'react';
-import { Church, Facebook, Instagram, Youtube, MapPin, Phone, Mail } from 'lucide-react';
+import React, { useState } from 'react';
+import { Facebook, Instagram, Youtube, MapPin, Phone, Mail, Flame } from 'lucide-react';
 
 const Footer: React.FC = () => {
+  const [logoError, setLogoError] = useState(false);
+
   return (
     <footer id="contact" className="bg-adm-blue text-white pt-20 pb-10 border-t border-white/10">
       <div className="container mx-auto px-4">
@@ -9,9 +11,20 @@ const Footer: React.FC = () => {
           
           {/* Brand */}
           <div className="space-y-6">
-            <div className="flex items-center gap-2">
-               <div className="bg-adm-gold p-2 rounded-full">
-                 <Church className="text-adm-blue w-6 h-6" />
+            <div className="flex items-center gap-3">
+               <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-adm-gold shadow-md bg-black">
+                 {!logoError ? (
+                   <img 
+                     src="logo-church.png" 
+                     alt="ADMFO Logo"
+                     className="w-full h-full object-cover"
+                     onError={() => setLogoError(true)}
+                   />
+                 ) : (
+                   <div className="w-full h-full flex items-center justify-center bg-gradient-to-b from-gray-900 to-black">
+                     <Flame className="text-orange-500 fill-orange-600" size={24} />
+                   </div>
+                 )}
                </div>
                <span className="font-serif text-2xl font-bold tracking-wide">ADMFO</span>
             </div>
