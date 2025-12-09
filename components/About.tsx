@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Heart, Users, Globe } from 'lucide-react';
 
@@ -21,6 +21,8 @@ const features = [
 ];
 
 const About: React.FC = () => {
+  const [imgError, setImgError] = useState(false);
+
   return (
     <section id="about" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -61,22 +63,38 @@ const About: React.FC = () => {
 
           {/* Image Grid */}
           <motion.div 
-            className="lg:w-1/2 grid grid-cols-2 gap-4"
+            className="lg:w-1/2 grid grid-cols-2 gap-4 relative"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <img 
-              src="https://picsum.photos/seed/worship1/600/800" 
-              alt="Worship" 
-              className="rounded-lg shadow-xl translate-y-8" 
-            />
+            {/* Foto dos Pastores / História */}
+            <div className="rounded-lg shadow-xl translate-y-8 overflow-hidden bg-white border border-gray-100">
+               {!imgError ? (
+                 <img 
+                  src="pastors.png" // O usuário deve salvar a imagem com este nome
+                  alt="Pastores da ADMFO" 
+                  className="w-full h-full object-cover"
+                  onError={() => setImgError(true)}
+                />
+               ) : (
+                <img 
+                  src="https://picsum.photos/seed/worship1/600/800" 
+                  alt="Worship Placeholder" 
+                  className="w-full h-full object-cover"
+                />
+               )}
+            </div>
+            
             <img 
               src="https://picsum.photos/seed/prayer1/600/800" 
-              alt="Prayer" 
-              className="rounded-lg shadow-xl -translate-y-8" 
+              alt="Momento de Oração" 
+              className="rounded-lg shadow-xl -translate-y-8 object-cover h-full w-full" 
             />
+
+            {/* Elemento decorativo atrás (opcional) */}
+            <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[110%] h-[80%] bg-adm-gold/10 rounded-full blur-3xl opacity-50"></div>
           </motion.div>
         </div>
       </div>
